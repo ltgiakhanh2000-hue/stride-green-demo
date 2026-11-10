@@ -1,6 +1,7 @@
 import ESGStats from "@/src/components/esg/ESGStats";
 import { esgStatsData } from "@/src/data/mockData";
 import ChartSection from "@/src/components/esg/ChartSection";
+import ESGReportButton from "@/src/components/esg/ESGReportButton";
 
 export default function DashboardPage() {
   const d = esgStatsData;
@@ -17,8 +18,7 @@ export default function DashboardPage() {
             Kỳ báo cáo: Tháng {d.monthYear} · Dữ liệu chốt lúc 23:59 ngày 31/10/2026
           </p>
         </div>
-
-        {/* >>> BƯỚC 8: chèn nút "Xem & Xuất Báo cáo ESG" vào ngay dưới dòng này <<< */}
+        <ESGReportButton />
       </div>
 
       {/* ===== 5 thẻ KPI ===== */}
