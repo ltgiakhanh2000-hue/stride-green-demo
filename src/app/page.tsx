@@ -1,39 +1,39 @@
-"use client";
+import ESGStats from "@/src/components/esg/ESGStats";
+import { esgStatsData } from "@/src/data/mockData";
 
-import { useToast } from "@/src/components/common/ToastProvider";
-
-export default function Home() {
-  const { showToast } = useToast();
+export default function DashboardPage() {
+  const d = esgStatsData;
 
   return (
-    <main className="space-y-4 p-8">
-      <h1 className="text-2xl font-bold text-brand-700">Thử nghiệm Toast</h1>
-      <div className="flex flex-wrap gap-3">
-        <button
-          onClick={() => showToast("Đã tải Báo cáo PDF thành công", "success")}
-          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
-        >
-          Success
-        </button>
-        <button
-          onClick={() => showToast("Đang chuẩn bị dữ liệu báo cáo...", "info")}
-          className="rounded-lg bg-slate-600 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700"
-        >
-          Info
-        </button>
-        <button
-          onClick={() => showToast("Sản lượng thấp hơn mức cam kết", "warning")}
-          className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-600"
-        >
-          Warning
-        </button>
-        <button
-          onClick={() => showToast("Không thể gửi Ticket, thử lại sau", "error")}
-          className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
-        >
-          Error
-        </button>
+    <div className="space-y-6">
+      {/* ===== Tiêu đề trang ===== */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-xl font-bold text-slate-900 md:text-2xl">
+            Dashboard ESG &amp; Báo cáo Phát thải
+          </h1>
+          <p className="mt-1 text-sm text-slate-500">
+            Kỳ báo cáo: Tháng {d.monthYear} · Dữ liệu chốt lúc 23:59 ngày 31/10/2026
+          </p>
+        </div>
+
+        {/* >>> BƯỚC 8: chèn nút "Xem & Xuất Báo cáo ESG" vào ngay dưới dòng này <<< */}
       </div>
-    </main>
+
+      {/* ===== 5 thẻ KPI ===== */}
+      <ESGStats />
+
+      {/* >>> BƯỚC 7: chèn <ChartSection /> vào ngay dưới dòng này <<< */}
+
+      {/* ===== Chú thích hệ số phát thải ===== */}
+      <p className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs leading-relaxed text-slate-500">
+        Hệ số phát thải lưới điện năm {d.emissionFactorYear}:{" "}
+        <span className="font-semibold text-slate-700">
+          {d.emissionFactor.toString().replace(".", ",")} tCO₂/MWh
+        </span>{" "}
+        (Công văn số 11232/BNNMT-BĐKH). Phát thải Scope 2 tính theo phương pháp dựa trên vị trí từ điện mua lưới.
+        Phát thải tránh được chỉ là chỉ số đối chiếu, không thuộc kiểm kê Scope 2.
+      </p>
+    </div>
   );
 }
