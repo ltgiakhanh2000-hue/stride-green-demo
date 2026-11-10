@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/src/components/common/ToastProvider";
 import Header from "@/src/components/common/Header";
@@ -9,6 +9,12 @@ import Sidebar from "@/src/components/common/Sidebar";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "vietnamese"],
+});
+// Font có chân cho văn bản báo cáo (hỗ trợ tiếng Việt)
+const notoSerif = Noto_Serif({
+  variable: "--font-noto-serif",
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} ${notoSerif.variable} antialiased`}>
         <ToastProvider>
           <Header />
           <div className="flex">
