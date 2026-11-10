@@ -1,5 +1,6 @@
 import ESGStats from "@/src/components/esg/ESGStats";
 import { esgStatsData } from "@/src/data/mockData";
+import ChartSection from "@/src/components/esg/ChartSection";
 
 export default function DashboardPage() {
   const d = esgStatsData;
@@ -23,7 +24,7 @@ export default function DashboardPage() {
       {/* ===== 5 thẻ KPI ===== */}
       <ESGStats />
 
-      {/* >>> BƯỚC 7: chèn <ChartSection /> vào ngay dưới dòng này <<< */}
+      <ChartSection /> 
 
       {/* ===== Chú thích hệ số phát thải ===== */}
       <p className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs leading-relaxed text-slate-500">
